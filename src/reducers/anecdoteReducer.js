@@ -41,14 +41,14 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export const getVote = id => {
+export const doVoteItem = id => {
   return {
     type: 'VOTE',
     payload: { id }
   }
 }
 
-export const getAdd = anecdote => {
+export const doAddItem = anecdote => {
   return {
     type: 'ADD',
     payload: anecdote
