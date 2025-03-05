@@ -6,6 +6,8 @@ import reducer from './reducers/anecdoteReducer'
 
 const store = createStore(reducer)
 
+store.subscribe(() => console.log('state after action  ------:', store.getState()))
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />
