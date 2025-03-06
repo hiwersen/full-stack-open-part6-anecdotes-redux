@@ -4,7 +4,7 @@ import { doVoteItem } from '../reducers/anecdoteReducer'
 // Presentational component
 const List = ({ anecdote, handleVote }) => {
     return (
-        <li>
+        <div>
             <div>
                 {anecdote.content}
             </div>
@@ -12,17 +12,24 @@ const List = ({ anecdote, handleVote }) => {
                 Has {anecdote.votes}
                 <button onClick={handleVote}>Vote</button>
             </div>
-        </li>
+        </div>
     )
 }
 
 // Container component
 const AnecdoteList = () => {
-    const anecdotes = useSelector(state => [...state].sort((a,b) => b.votes - a.votes))
     const dispatch = useDispatch()
+    const anecdotes = useSelector(({ anecdotes, filter }) => {
+        if (filter) {
+            anecdotes = anecdotes.filter(({ content })=> content.includes(filter))
+        }
+
+       return [...anecdotes].sort((a, b) => b.votes - a.votes)
+    })
+    
 
     return (
-        <ul>
+        <div>
             { anecdotes.map(anecdote => {
                 return (
                     <List
@@ -32,7 +39,7 @@ const AnecdoteList = () => {
                     />
                 )
             }) }
-        </ul>
+        </div>
     )
 }
 

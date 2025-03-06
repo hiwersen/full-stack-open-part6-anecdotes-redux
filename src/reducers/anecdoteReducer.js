@@ -28,8 +28,8 @@ const add = (state, anecdote) => {
 }
 
 const reducer = (state = initialState, action) => {
-  console.log('state before action  -----:', state)
-  console.log('action -------------------:', action)
+  console.log('ANECDOTE state before action  -----:', state)
+  console.log('action ----------------------------:', action)
 
   switch (action.type) {
     case 'VOTE':
