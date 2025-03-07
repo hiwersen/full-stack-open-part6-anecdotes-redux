@@ -9,11 +9,12 @@ const Notification = () => {
     borderWidth: 1,
     marginBottom: 16
   }
-  return (
+  return notification && (
     <div style={style}>
       {notification}
     </div>
   )
+   
 }
 
 export default Notification
