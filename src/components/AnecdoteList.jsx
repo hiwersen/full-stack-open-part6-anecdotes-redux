@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { doVoteItem } from '../reducers/anecdoteReducer'
+import { createSelector } from '@reduxjs/toolkit'
 
 // Presentational component
 const List = ({ anecdote, handleVote }) => {
@@ -19,13 +20,19 @@ const List = ({ anecdote, handleVote }) => {
 // Container component
 const AnecdoteList = () => {
     const dispatch = useDispatch()
-    const anecdotes = useSelector(({ anecdotes, filter }) => {
+
+    const selectAnecdotes = ({ anecdotes }) => anecdotes
+    const selectFilter = ({ filter }) =>  filter
+    const outputSelector = (anecdotes, filter) => {
         if (filter) {
             anecdotes = anecdotes.filter(({ content })=> content.includes(filter))
         }
 
        return [...anecdotes].sort((a, b) => b.votes - a.votes)
-    })
+    }
+
+    const memoizedSelector = createSelector([selectAnecdotes, selectFilter], outputSelector)
+    const anecdotes = useSelector(memoizedSelector)
     
 
     return (
