@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { doVoteItem } from '../reducers/anecdoteReducer'
+import { doVoteAnecdote } from '../reducers/anecdoteReducer'
 import { createSelector } from '@reduxjs/toolkit'
 
 // Presentational component
@@ -42,7 +42,7 @@ const AnecdoteList = () => {
                     <List
                         key={anecdote.id}
                         anecdote={anecdote}
-                        handleVote={ () => dispatch(doVoteItem(anecdote.id)) }
+                        handleVote={ () => dispatch(doVoteAnecdote(anecdote.id)) }
                     />
                 )
             }) }
