@@ -3,7 +3,7 @@
     {
       "content": "Hello, world!",
       "id": "56387",
-      "votes": 14
+      "votes": 1
     },
     {
       "content": "If it hurts, do it more often",
@@ -34,16 +34,6 @@
       "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
       "id": "98312",
       "votes": 0
-    },
-    {
-      "id": "847b",
-      "content": "But it works in my machine...",
-      "votes": 18
-    },
-    {
-      "id": "3b99",
-      "content": "hello",
-      "votes": 11
     }
   ]
 }
