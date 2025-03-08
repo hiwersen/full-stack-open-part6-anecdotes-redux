@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import anecdoteServices from '../services/anecdotes'
-import { doUpdateAnecdote } from '../reducers/anecdoteReducer'
-import { doSetNotification, doRemoveNotification } from '../reducers/notificationReducer'
 import { createSelector } from '@reduxjs/toolkit'
+import { voteAnecdote } from '../reducers/anecdoteReducer'
 
 // Presentational component
 const List = ({ anecdote, handleVote }) => {
@@ -35,15 +33,6 @@ const AnecdoteList = () => {
 
     const memoizedSelector = createSelector([selectAnecdotes, selectFilter], outputSelector)
     const anecdotes = useSelector(memoizedSelector)
-    
-    const vote = async anecdote => {
-        anecdote = await anecdoteServices.vote(anecdote)
-        dispatch(doUpdateAnecdote(anecdote))
-        dispatch(doSetNotification(`You voted: '${anecdote.content}'`))
-        setTimeout(() => {
-            dispatch(doRemoveNotification())
-        }, 5000)
-    } 
 
     return (
         <div>
@@ -52,7 +41,7 @@ const AnecdoteList = () => {
                     <List
                         key={anecdote.id}
                         anecdote={anecdote}
-                        handleVote={() => vote(anecdote) }
+                        handleVote={() => dispatch(voteAnecdote(anecdote)) }
                     />
                 )
             }) }
