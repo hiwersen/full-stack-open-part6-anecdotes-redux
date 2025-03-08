@@ -9,13 +9,10 @@ const AnecdoteForm = () => {
     const handleCreate = async event => {
         event.preventDefault()
     
-        const anecdoteToPost = {
-            content: event.target.anecdote.value,
-            votes: 0
-        } 
+        const content = event.target.anecdote.value
         event.target.anecdote.value = ''
 
-        const anecdote = await anecdoteServices.postAnecdote(anecdoteToPost)
+        const anecdote = await anecdoteServices.create(content)
     
         dispatch(doAddAnecdote(anecdote))
         dispatch(doSetNotification(`You added: '${anecdote}'`))

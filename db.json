@@ -3,7 +3,7 @@
     {
       "content": "Hello, world!",
       "id": "56387",
-      "votes": 0
+      "votes": 14
     },
     {
       "content": "If it hurts, do it more often",
@@ -36,9 +36,14 @@
       "votes": 0
     },
     {
-      "id": "163f",
+      "id": "847b",
       "content": "But it works in my machine...",
-      "votes": 0
+      "votes": 18
+    },
+    {
+      "id": "3b99",
+      "content": "hello",
+      "votes": 11
     }
   ]
 }
